@@ -118,3 +118,27 @@ if __name__ == "__main__":
     show_preprocess_prints = False
     counts, df = process_data(show_preprocess_prints)
     model(counts, df)
+
+    # Using the numeric value of airline_sentiment, output the average sentiment of each airline
+    # and report which airline has the highest positive sentiment.
+    # The closer the value is to 0 the more negative the sentiment
+    # A netural sentiment is a value of 1
+    # The closer the value is to 2 the more positive the sentiment
+    print("\n------------------------------------------")
+    print("Average Sentiment of Each Airline")
+    print("Negative = 0")
+    print("Neutral = 1")
+    print("Positive = 2")
+    print("------------------------------------------")
+    # Get the unique values from the dataframe of all the airlines
+    airlines = df.airline.unique()
+    airline_sentiments = []
+    # Get the average sentiment of each airline
+    for airline in airlines:
+        AL_cur = df['airline_sentiment'].loc[df['airline'] == airline]
+        airline_sentiments.append(AL_cur.mean())
+
+    airline_sentiments = np.array(airline_sentiments)
+    AS = {'airline': airlines, 'avg_sentiment': airline_sentiments}
+    AS_df = pd.DataFrame(data=AS)
+    print(AS_df)
