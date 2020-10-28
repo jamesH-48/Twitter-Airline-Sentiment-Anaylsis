@@ -87,13 +87,13 @@ def process_data(show_prints):
     return counts, df
 
 # Create model for evaluation of data
-def model(counts, df):
-    X_train, X_test, y_train, y_test = train_test_split(counts, df['airline_sentiment'], test_size=0.1)
+def model(counts, df, test_size, alpha, fit_prior):
+    X_train, X_test, y_train, y_test = train_test_split(counts, df['airline_sentiment'], test_size=test_size)
     print("X_train shape: ", X_train.shape)
     print("X_test shape: ", X_test.shape)
     print()
 
-    model = MultinomialNB().fit(X_train, y_train)
+    model = MultinomialNB(alpha=alpha, fit_prior=fit_prior).fit(X_train, y_train)
     predicted = model.predict(X_test)
 
     print("Model Prediction Result:")
@@ -117,7 +117,66 @@ if __name__ == "__main__":
     # There will always be the constant print out of the results of the model
     show_preprocess_prints = False
     counts, df = process_data(show_preprocess_prints)
-    model(counts, df)
+
+    '''
+        Repeat this 5 times with different parameters each.
+    '''
+    # Set parameters for different model results
+    print("------------------------------------------------------------------------------------")
+    print("Trial 1")
+    print("------------------------------------------------------------------------------------")
+    test_size = .1
+    alpha = 1
+    fit_prior = True
+    print("Test Size: ", test_size)
+    print("Alpha: ", alpha)
+    print("Fit Prior: ", fit_prior)
+    model(counts, df, test_size, alpha, fit_prior)
+
+    print("------------------------------------------------------------------------------------")
+    print("Trial 2")
+    print("------------------------------------------------------------------------------------")
+    test_size = .1
+    alpha = 1
+    fit_prior = False
+    print("Test Size: ", test_size)
+    print("Alpha: ", alpha)
+    print("Fit Prior: ", fit_prior)
+    model(counts, df, test_size, alpha, fit_prior)
+
+    print("------------------------------------------------------------------------------------")
+    print("Trial 3")
+    print("------------------------------------------------------------------------------------")
+    test_size = .2
+    alpha = 1
+    fit_prior = True
+    print("Test Size: ", test_size)
+    print("Alpha: ", alpha)
+    print("Fit Prior: ", fit_prior)
+    model(counts, df, test_size, alpha, fit_prior)
+
+    print("------------------------------------------------------------------------------------")
+    print("Trial 4")
+    print("------------------------------------------------------------------------------------")
+    test_size = .2
+    alpha = 1
+    fit_prior = False
+    print("Test Size: ", test_size)
+    print("Alpha: ", alpha)
+    print("Fit Prior: ", fit_prior)
+    model(counts, df, test_size, alpha, fit_prior)
+
+    print("------------------------------------------------------------------------------------")
+    print("Trial 5")
+    print("------------------------------------------------------------------------------------")
+    test_size = .3
+    alpha = 1
+    fit_prior = True
+    print("Test Size: ", test_size)
+    print("Alpha: ", alpha)
+    print("Fit Prior: ", fit_prior)
+    model(counts, df, test_size, alpha, fit_prior)
+    print("------------------------------------------------------------------------------------")
 
     # Using the numeric value of airline_sentiment, output the average sentiment of each airline
     # and report which airline has the highest positive sentiment.
