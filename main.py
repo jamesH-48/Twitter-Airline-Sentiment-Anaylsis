@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
     # Prints are basic confirmations of the data for the coder/user
     # There will always be the constant print out of the results of the model
-    show_preprocess_prints = False
+    show_preprocess_prints = True
     counts, df = process_data(show_preprocess_prints)
 
     '''
@@ -147,8 +147,8 @@ if __name__ == "__main__":
     print("------------------------------------------------------------------------------------")
     print("Trial 3")
     print("------------------------------------------------------------------------------------")
-    test_size = .2
-    alpha = 1
+    test_size = .1
+    alpha = .5
     fit_prior = True
     print("Test Size: ", test_size)
     print("Alpha: ", alpha)
@@ -158,8 +158,8 @@ if __name__ == "__main__":
     print("------------------------------------------------------------------------------------")
     print("Trial 4")
     print("------------------------------------------------------------------------------------")
-    test_size = .2
-    alpha = 1
+    test_size = .1
+    alpha = .5
     fit_prior = False
     print("Test Size: ", test_size)
     print("Alpha: ", alpha)
@@ -169,8 +169,8 @@ if __name__ == "__main__":
     print("------------------------------------------------------------------------------------")
     print("Trial 5")
     print("------------------------------------------------------------------------------------")
-    test_size = .3
-    alpha = 1
+    test_size = .1
+    alpha = .75
     fit_prior = True
     print("Test Size: ", test_size)
     print("Alpha: ", alpha)
